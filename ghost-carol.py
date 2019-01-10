@@ -1,7 +1,21 @@
 import markovify
-import nltk
 import re
 import itertools
+from twython import Twython
+
+from auth import (
+    consumer_key,
+    consumer_secret,
+    access_token,
+    access_token_secret
+)
+
+twitter = Twython(
+    consumer_key,
+    consumer_secret,
+    access_token,
+    access_token_secret
+)
 
 
 text_a = open("ghost.txt").read()
@@ -37,3 +51,5 @@ for _ in itertools.repeat(None, 1):
 	    out = out.replace("\n", " ")
 	    print(out)
 	    print()
+	    message = out
+	    twitter.update_status(status=message)
