@@ -1,5 +1,4 @@
 import markovify
-import nltk
 import re
 import itertools
 from twython import Twython
